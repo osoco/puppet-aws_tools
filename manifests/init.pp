@@ -2,6 +2,12 @@ class aws_tools($path = "/opt")  {
 
     include git
 
+    if !defined(Package['bzip2']) {
+        package { 'bzip2':
+            ensure => 'installed',
+        }
+    }
+
     file { "$path":
         ensure => directory,
         owner => 'root',

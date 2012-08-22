@@ -1,8 +1,8 @@
-class aws-tools($path = "/opt/aws-tools")  {
+class aws_tools($path = "/opt")  {
 
     include git
 
-    file { "/opt":
+    file { "$path":
         ensure => directory,
         owner => 'root',
         group => 'root',
@@ -11,12 +11,14 @@ class aws-tools($path = "/opt/aws-tools")  {
 
     git::clone { "aws-tools-clone":
         url => "https://github.com/osoco/aws-tools.git",
-        path => "$path",
-        require => File["/opt"]
+        path => "$path/aws-tools",
+	username => "",
+	password => "",
+        require => File["$path"]
     }
 
     git::pull { "aws-tools-pull":
-        path => "$path",
+        path => "$path/aws-tools",
     }
 
 }

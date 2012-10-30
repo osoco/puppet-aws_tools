@@ -18,8 +18,8 @@ class aws_tools($path = "/opt")  {
     git::clone { "aws-tools-clone":
         url => "https://github.com/osoco/aws-tools.git",
         path => "$path/aws-tools",
-	username => "",
-	password => "",
+	username => "someuser",
+	password => "somepass",
         require => File["$path"]
     }
 
